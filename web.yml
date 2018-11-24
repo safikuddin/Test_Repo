@@ -1,5 +1,6 @@
 ---
 - hosts: web01
+  remote_user: naveen
   become: yes
   tasks:
 
