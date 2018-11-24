@@ -15,10 +15,10 @@
        src: index.html
        dest: /var/share/nginx/index.html
 
-     - notify:
+     notify:
         - restart
-   - handlers:
-      - name: restart
+  handlers:
+   - name: restart
      service:
        name: nginx
        state: restarted
