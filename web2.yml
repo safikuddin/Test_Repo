@@ -1,0 +1,24 @@
+---
+- hosts: web01
+  become: yes
+  tasks:
+   - name: install nginx
+     yum:
+       name: nginx
+       state: present
+   - name: start service
+     service:
+       name: nginx
+       state: started
+   - name: deploy index.html
+     copy:
+       src: index.html
+       dest: /var/share/nginx/index.html
+
+     - notify:
+        - restart
+   - handlers:
+      - name: restart
+     service:
+       name: nginx
+       state: restarted
